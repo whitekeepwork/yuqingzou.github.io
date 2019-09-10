@@ -4,8 +4,8 @@ date: 2019-07-31 23:11:16
 tags: React 
 ---
 
-##JSX
-####When specifiying the react element type
+## JSX
+#### When specifiying the react element type
 1. React must be in scope
 Always remeber to import react and required component
 ``` javascript
