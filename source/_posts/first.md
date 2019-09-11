@@ -1,5 +1,5 @@
 ---
-title: Note for React (1)
+title: JSX Note
 date: 2019-07-31 23:11:16
 tags: React 
 ---
