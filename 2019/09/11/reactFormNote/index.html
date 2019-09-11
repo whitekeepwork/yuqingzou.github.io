@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>JSX Note | Hexo</title>
+  <title>React Form Note | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,8 +173,8 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2019-08-01T03:11:16.000Z" itemprop="datePublished">
-          2019-07-31
+      <time datetime="2019-09-11T04:12:29.000Z" itemprop="datePublished">
+          2019-09-11
       </time>
     
     
@@ -183,39 +183,27 @@
     
     
 </span>
-                <h1>JSX Note</h1>
+                <h1>React Form Note</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><h4 id="When-specifiying-the-react-element-type"><a href="#When-specifiying-the-react-element-type" class="headerlink" title="When specifiying the react element type"></a>When specifiying the react element type</h4><ol>
-<li>React must be in scope<br>Always remeber to import react and required component<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> Customerone <span class="keyword">from</span> <span class="string">'./Customerone'</span></span><br></pre></td></tr></table></figure>
+      		<h2 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h2><h4 id="Controlled-Components"><a href="#Controlled-Components" class="headerlink" title="Controlled Components"></a>Controlled Components</h4><p>In React, <strong>this.state</strong> or <strong>state of component</strong> is the <strong><em>single source of truth</em></strong>, which takes all mutable state, and only can be changed by using <strong>setState()</strong> function.</p>
+<p><strong>Controlled Components</strong> stands for that react component not only render a form but also controls what happend when user input.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">'text'</span> value=&#123;<span class="keyword">this</span>.state.formValue&#125; onChange=&#123;<span class="keyword">this</span>.change&#125;/&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>As long as we want to use JSX, the <strong>React</strong> library must be imported</p>
-<ol start="2">
-<li><p>Using Dot Notation for JSX Type<br>If in a module file, mutiple React components are exported, we can use <strong>Modulename.ComponentName</strong> to choose the one component.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span>(&lt;Modulename.ComponentName /&gt;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>User-Defined Component Must Be Capitalized<br>Any element type that starts with lowercase letter refers to a <strong>built-in component</strong>. Everytime naming components with a capital letter, both for function based and class based component</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user definded component should be capitalized</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span> (<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Choosing the Type at Runtime<br>Gneral expression can not be used as React element type. if you want it, need as it to a capitalized variable first. (used when render a differne t component basd on a prop)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//wrong way</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Story</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line"><span class="comment">// Wrong! JSX type can't be an expression.</span></span><br><span class="line"><span class="keyword">return</span> &lt;components[props.storyType] story=&#123;props.story&#125; /&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//right way</span><br><span class="line">function Story(props) &#123;</span><br><span class="line">// Correct! JSX type can be a capitalized variable.</span><br><span class="line">    const SpecificStory = components[props.storyType];</span><br><span class="line">return &lt;SpecificStory story=&#123;props.story&#125; /&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>the Value are displied as the value from state, and when user is inputting, <strong>change()</strong> runs to update <strong>this.state</strong>, meamwhile <strong>value</strong> will be updated as well. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chnage(event)&#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        <span class="keyword">this</span>.state.formValue: event.target.value</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>reference link [here][<a href="https://reactjs.org/docs/jsx-in-depth.html]" target="_blank" rel="noopener">https://reactjs.org/docs/jsx-in-depth.html]</a></p>
-
+<h3 id="Different-Types-of-Form-Tag"><a href="#Different-Types-of-Form-Tag" class="headerlink" title="Different Types of Form Tag"></a>Different Types of Form Tag</h3><h4 id="The-textarea-Tag"><a href="#The-textarea-Tag" class="headerlink" title="The textarea Tag"></a>The textarea Tag</h4>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2019/09/09/hello-world/" style="float: left;">
-        ← Hello World
-    </a>
     
+    <a class="pull-right" href="/2019/09/09/hello-world/">
+        Hello World →
+    </a>
     
 </nav>
 
